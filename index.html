@@ -5,7 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Library</title>
     <link rel="stylesheet" href="src/css/base.css" />
-    <script src="src/js/main.js"></script>
+    <script src="src/js/main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <dialog>
+      <form>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="The Little Prince" />
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input
+            type="text"
+            id="author"
+            placeholder="Antoine de Saint-Exupéry"
+          />
+        </div>
+        <div>
+          <label for="pages">Pages:</label>
+          <input type="number" id="pages" placeholder="96" />
+        </div>
+        <div>
+          <label for="readed">Readed:</label>
+          <select id="readed">
+            <option value="true">Yes</option>
+            <option value="false" selected>No</option>
+          </select>
+        </div>
+        <div>
+          <button class="add-book-btn">Add</button>
+          <button class="cancel-book-btn">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="container">
+      <header class="header">Library</header>
+      <div class="books"></div>
+      <button class="add-book-btn-dialog">Add book</button>
+    </div>
+  </body>
 </html>
