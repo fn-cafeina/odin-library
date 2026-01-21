@@ -12,6 +12,10 @@ function Book(name, author, pages, readed, id) {
   this.id = id;
 }
 
+Book.prototype.alternateRead = function () {
+  this.readed = this.readed === "true" ? "false" : "true";
+};
+
 function addBookToLibrary(name, author, pages, readed) {
   const randomUUID = crypto.randomUUID();
   const newBook = new Book(name, author, pages, readed, randomUUID);
@@ -35,9 +39,39 @@ function renderBook() {
     pPages.textContent = book.pages;
     pReaded.textContent = book.readed === "true" ? "Readed" : "Not readed";
 
-    divBook.append(pName, pAuthor, pPages, pReaded);
+    divBook.dataset.id = book.id;
+
+    const btnsContainer = document.createElement("div");
+    const deleteBtn = document.createElement("button");
+    const markReadBtn = document.createElement("button");
+
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", () => removeBook(divBook));
+    markReadBtn.textContent = book.readed === "true" ? "Unread" : "Read";
+    markReadBtn.addEventListener("click", () => alternateReadBook(divBook));
+
+    btnsContainer.append(markReadBtn, deleteBtn);
+
+    divBook.append(pName, pAuthor, pPages, pReaded, btnsContainer);
     books.appendChild(divBook);
   });
+}
+
+function removeBook(book) {
+  myLibrary.splice(
+    myLibrary.findIndex((i) => i.id === book.dataset.id),
+    1,
+  );
+
+  renderBook();
+}
+
+function alternateReadBook(book) {
+  myLibrary[
+    myLibrary.findIndex((i) => i.id === book.dataset.id)
+  ].alternateRead();
+
+  renderBook();
 }
 
 const dialog = document.querySelector("dialog");

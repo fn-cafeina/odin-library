@@ -26,6 +26,8 @@ dialog {
   transform: translate(-50%, -50%);
   margin: 0;
   padding: 10px;
+  border: 1px solid #0000003f;
+  border-radius: 10px;
 }
 
 dialog::backdrop {
@@ -69,4 +71,40 @@ dialog form div:last-child {
   flex: 1;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 10px;
+}
+
+.books > div {
+  height: 250px;
+  background-color: rgb(83, 83, 83);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.books > div > div {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+button {
+  border: 1px solid #77777746;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
